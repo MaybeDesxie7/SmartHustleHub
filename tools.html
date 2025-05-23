@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tools - OrionStarz</title>
+  <link rel="stylesheet" href="dashboard.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+  <div class="dashboard">
+    <aside class="sidebar">
+      <h2>OrionStarz</h2>
+      <nav>
+        <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+        <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
+        <a href="services.html"><i class="fas fa-briefcase"></i> My Services</a>
+        <a href="messages.html"><i class="fas fa-envelope"></i> Messages</a>
+        <a href="tools.html" class="active"><i class="fas fa-tools"></i> Tools</a>
+        <a href="ebooks.html"><i class="fas fa-book"></i> Ebooks</a>
+        <a href="tutorials.html"><i class="fas fa-chalkboard-teacher"></i> Tutorials</a>
+        <a href="offers.html"><i class="fas fa-gift"></i> Offers</a>
+        <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+        <a href="#" id="logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <header class="dashboard-header">
+        <h1>Tools & Utilities</h1>
+        <p id="time"></p>
+      </header>
+
+      <section class="tools-section">
+        <div class="tool-card">
+          <h3>Password Generator</h3>
+          <p>Generate strong, random passwords for your accounts.</p>
+          <button onclick="generatePassword()">Generate</button>
+          <input type="text" id="passwordOutput" readonly />
+        </div>
+
+        <div class="tool-card">
+          <h3>Color Picker</h3>
+          <p>Choose a color to copy its HEX code.</p>
+          <input type="color" id="colorPicker" />
+          <input type="text" id="colorCode" readonly />
+        </div>
+
+        <!-- Add more tool cards here if needed -->
+      </section>
+    </main>
+  </div>
+
+  <script src="tools.js"></script>
+</body>
+</html>

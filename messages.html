@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Messages - OrionStarz</title>
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body>
+  <div class="dashboard">
+    <aside class="sidebar">
+      <h2>OrionStarz</h2>
+      <nav>
+       <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+        <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
+        <a href="services.html"><i class="fas fa-briefcase"></i> My Services</a>
+        <a href="messages.html" class="active"><i class="fas fa-envelope"></i> Messages</a>
+        <a href="tools.html"><i class="fas fa-tools"></i> Tools</a>
+        <a href="ebooks.html"><i class="fas fa-book"></i> Ebooks</a>
+        <a href="tutorials.html"><i class="fas fa-chalkboard-teacher"></i> Tutorials</a>
+        <a href="offers.html"><i class="fas fa-gift"></i> Offers</a>
+        <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+        <a href="#" id="logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <header class="dashboard-header">
+        <h1>Client Messages & Group Chat</h1>
+        <p id="time"></p>
+      </header>
+
+      <div class="tabs">
+        <button class="tab-button active" data-tab="inbox">Inbox</button>
+        <button class="tab-button" data-tab="groupchat">Group Chat</button>
+      </div>
+
+      <!-- Inbox Tab -->
+      <section class="tab-content active" id="inbox">
+        <ul class="message-list" id="messageList"></ul>
+      </section>
+
+      <!-- Group Chat Tab -->
+      <section class="tab-content" id="groupchat">
+        <div class="chat-room" data-room="affiliators">
+          <h3>Affiliators</h3>
+          <div class="chat-box">
+            <div class="chat-message">John: Let's boost this week's campaign.</div>
+          </div>
+          <input type="text" placeholder="Type a message..." />
+          <button class="send-button">Send</button>
+        </div>
+
+        <div class="chat-room" data-room="content-creators">
+          <h3>Content Creators</h3>
+          <div class="chat-box">
+            <div class="chat-message">Jane: Uploaded a new tutorial today!</div>
+          </div>
+          <input type="text" placeholder="Type a message..." />
+          <button class="send-button">Send</button>
+        </div>
+
+        <div class="chat-room" data-room="web-developers">
+          <h3>Web Developers</h3>
+          <div class="chat-box">
+            <div class="chat-message">Dev: Working on the quote form update.</div>
+          </div>
+          <input type="text" placeholder="Type a message..." />
+          <button class="send-button">Send</button>
+        </div>
+
+        <div class="chat-room" data-room="clients">
+          <h3>Clients</h3>
+          <div class="chat-box">
+            <div class="chat-message">Client A: Any update on my site?</div>
+          </div>
+          <input type="text" placeholder="Type a message..." />
+          <button class="send-button">Send</button>
+        </div>
+
+        <div class="chat-room" data-room="team-leads">
+          <h3>Team Leads</h3>
+          <div class="chat-box">
+            <div class="chat-message">Lead: Reminder—briefing starts at 10 AM.</div>
+          </div>
+          <input type="text" placeholder="Type a message..." />
+          <button class="send-button">Send</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="messages.js"></script>
+</body>
+</html>
