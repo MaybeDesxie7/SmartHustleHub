@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Services - Smart Hustle Hub</title>
+  <link rel="stylesheet" href="dashboard.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="dark-mode">
+  <div class="dashboard">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="logo">Smart Hustle Hub</div>
+      <nav>
+        <ul>
+          <li><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+          <li><a href="profile.html"><i class="fas fa-user"></i> Profile</a></li>
+          <li><a href="MyServices.html" class="active"><i class="fas fa-briefcase"></i> My Services</a></li>
+          <li><a href="messages.html"><i class="fas fa-envelope"></i> Messages</a></li>
+          <li><a href="tools.html"><i class="fas fa-toolbox"></i> Tools</a></li>
+          <li><a href="ebooks.html"><i class="fas fa-book"></i> Ebooks</a></li>
+          <li><a href="tutorials.html"><i class="fas fa-video"></i> Tutorials</a></li>
+          <li><a href="offers.html"><i class="fas fa-tags"></i> Offers</a></li>
+          <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+          <li><a href="logout.html" style="color: #ff4d4d;"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header>
+        <div class="user-info">
+          <span>Manage Your Services</span>
+           <img src="https://i.pravatar.cc/100" alt="User Profile" />
+          <button id="toggleModeBtn" title="Toggle Light/Dark Mode">
+            <i class="fas fa-adjust"></i>
+          </button>
+          <button id="toggleMenuBtn" title="Toggle Menu">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </header>
+
+      <section class="services-section">
+        <h2><i class="fas fa-briefcase"></i> Add a New Service</h2>
+        <form id="serviceForm">
+          <label>Title: <input type="text" id="serviceTitle" required></label>
+          <label>Description: <textarea id="serviceDescription" required></textarea></label>
+          <label>Price: <input type="number" id="servicePrice" required></label>
+          <label>Category: <input type="text" id="serviceCategory" required></label>
+          <button type="submit" class="save-btn">Add Service</button>
+        </form>
+
+        <h2><i class="fas fa-list"></i> Your Services</h2>
+        <ul id="servicesList" class="services-list">
+          <!-- Dynamic services will be injected here -->
+        </ul>
+      </section>
+    </main>
+  </div>
+
+  <script src="MyServices.js"></script>
+  <script>
+  const toggleBtn = document.getElementById('toggleMenuBtn');
+  const sidebar = document.getElementById('sidebar');
+
+  toggleBtn.addEventListener('click', () => {
+    sidebar.classList.toggle('open');
+  });
+</script>
+</body>
+</html>

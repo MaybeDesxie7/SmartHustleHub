@@ -3,54 +3,65 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Tools - OrionStarz</title>
+  <title>Tools - Smart Hustle Hub</title>
   <link rel="stylesheet" href="dashboard.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
-<body>
+<body class="dark-mode">
   <div class="dashboard">
-    <aside class="sidebar">
-      <h2>OrionStarz</h2>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="logo">Smart Hustle Hub</div>
       <nav>
-        <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
-        <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
-        <a href="services.html"><i class="fas fa-briefcase"></i> My Services</a>
-        <a href="messages.html"><i class="fas fa-envelope"></i> Messages</a>
-        <a href="tools.html" class="active"><i class="fas fa-tools"></i> Tools</a>
-        <a href="ebooks.html"><i class="fas fa-book"></i> Ebooks</a>
-        <a href="tutorials.html"><i class="fas fa-chalkboard-teacher"></i> Tutorials</a>
-        <a href="offers.html"><i class="fas fa-gift"></i> Offers</a>
-        <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
-        <a href="#" id="logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        <ul>
+          <li><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+          <li><a href="profile.html"><i class="fas fa-user"></i> Profile</a></li>
+          <li><a href="MyServices.html"><i class="fas fa-briefcase"></i> My Services</a></li>
+          <li><a href="messages.html"><i class="fas fa-envelope"></i> Messages</a></li>
+          <li><a href="tools.html" class="active"><i class="fas fa-toolbox"></i> Tools</a></li>
+          <li><a href="ebooks.html"><i class="fas fa-book"></i> Ebooks</a></li>
+          <li><a href="tutorials.html"><i class="fas fa-video"></i> Tutorials</a></li>
+          <li><a href="offers.html"><i class="fas fa-tags"></i> Offers</a></li>
+          <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+          <li><a href="logout.html" style="color: #ff4d4d;"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
       </nav>
     </aside>
 
-    <main class="main">
-      <header class="dashboard-header">
-        <h1>Tools & Utilities</h1>
-        <p id="time"></p>
+    <!-- Main Content -->
+    <main class="main-content">
+      <header>
+        <div class="user-info">
+          <span>Tools</span>
+          <img src="https://i.pravatar.cc/100" alt="User Profile" />
+          <button id="toggleModeBtn" title="Toggle Light/Dark Mode"><i class="fas fa-adjust"></i></button>
+          <button id="toggleMenuBtn" title="Toggle Menu"><i class="fas fa-bars"></i></button>
+        </div>
       </header>
 
-      <section class="tools-section">
-        <div class="tool-card">
-          <h3>Password Generator</h3>
-          <p>Generate strong, random passwords for your accounts.</p>
-          <button onclick="generatePassword()">Generate</button>
-          <input type="text" id="passwordOutput" readonly />
-        </div>
+      <!-- Filter Tools -->
+      <div class="tool-filter">
+        <label for="toolFilter">Filter by type:</label>
+        <select id="toolFilter">
+          <option value="all">All</option>
+          <option value="marketing">Marketing</option>
+          <option value="design">Design</option>
+          <option value="productivity">Productivity</option>
+          <option value="ai">AI</option>
+        </select>
+      </div>
 
-        <div class="tool-card">
-          <h3>Color Picker</h3>
-          <p>Choose a color to copy its HEX code.</p>
-          <input type="color" id="colorPicker" />
-          <input type="text" id="colorCode" readonly />
-        </div>
-
-        <!-- Add more tool cards here if needed -->
-      </section>
+      <!-- Tools Display Section -->
+      <div id="toolsContainer"></div>
     </main>
   </div>
 
   <script src="tools.js"></script>
+  <script>
+    document.getElementById('toggleMenuBtn').addEventListener('click', () => {
+      document.getElementById('sidebar').classList.toggle('open');
+    });
+  </script>
 </body>
 </html>

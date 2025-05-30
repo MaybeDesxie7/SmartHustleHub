@@ -1,0 +1,124 @@
+<?php
+session_start();
+if (!isset($_SESSION['user'])) {
+    header("Location: login.php");
+    exit();
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Hustle Hub Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="dark-mode">
+  <div class="dashboard">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="logo">Smart Hustle Hub</div>
+      <nav>
+        <ul>
+          <li><a href="dashboard.html" class="active"><i class="fas fa-home"></i> Dashboard</a></li>
+          <li><a href="profile.html"><i class="fas fa-user"></i> Profile</a></li>
+          <li><a href="MyServices.html"><i class="fas fa-briefcase"></i> My Services</a></li>
+          <li><a href="messages.html"><i class="fas fa-envelope"></i> Messages</a></li>
+          <li><a href="tools.html"><i class="fas fa-toolbox"></i> Tools</a></li>
+          <li><a href="ebooks.html"><i class="fas fa-book"></i> Ebooks</a></li>
+          <li><a href="tutorials.html"><i class="fas fa-video"></i> Tutorials</a></li>
+          <li><a href="offers.html"><i class="fas fa-tags"></i> Offers</a></li>
+          <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+          <li><a href="logout.php" style="color: #ff4d4d;"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Header -->
+      <header>
+        <div class="user-info">
+          <span>Welcome back, Nyasha</span>
+          <img src="https://i.pravatar.cc/100" alt="User Profile" />
+          <button id="toggleModeBtn" title="Toggle Light/Dark Mode">
+            <i class="fas fa-adjust"></i>
+          </button>
+          <button id="toggleMenuBtn" title="Toggle Menu">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </header>
+
+      <!-- Overview Section -->
+      <section class="overview">
+        <div class="stats-grid">
+          <div class="card"><i class="fas fa-users"></i><h3>Clients</h3><p id="clientCount">0</p></div>
+          <div class="card"><i class="fas fa-cogs"></i><h3>Services</h3><p id="servicesCount">0</p></div>
+          <div class="card"><i class="fas fa-dollar-sign"></i><h3>Earnings</h3><p id="earnings">$0.00</p></div>
+          <div class="card"><i class="fas fa-calendar-day"></i><h3>Daily</h3><p id="dailyProgress">0%</p></div>
+          <div class="card"><i class="fas fa-calendar-week"></i><h3>Weekly</h3><p id="weeklyProgress">0%</p></div>
+          <div class="card"><i class="fas fa-star"></i><h3>Rating</h3><p id="rating">0 ★</p></div>
+        </div>
+
+        <!-- Quick Links + GPT Agent -->
+        <div class="quick-actions">
+          <h3><i class="fas fa-rocket"></i> Quick Actions</h3>
+          <div class="quick-links">
+            <button onclick="location.href='MyServices.html'"><i class="fas fa-plus"></i> Add Service</button>
+            <button onclick="location.href='tutorials.html'"><i class="fas fa-video"></i> View Tutorials</button>
+            <button onclick="location.href='tools.html'"><i class="fas fa-briefcase"></i> Start Hustle</button>
+            <button id="getAdviceBtn"><i class="fas fa-robot"></i> Get Advice</button>
+          </div>
+          <div id="aiAdviceResponse" class="advice-box" style="display:none;">
+            <p><strong>GPT Agent says:</strong> <span id="adviceText">Thinking...</span></p>
+          </div>
+        </div>
+
+        <h3>User Feedback</h3>
+        <ul id="feedbacks"></ul>
+      </section>
+
+      <!-- Activity Chart -->
+      <section class="tools">
+        <h2><i class="fas fa-chart-line"></i> Activity Overview</h2>
+        <canvas id="activityChart" height="100"></canvas>
+      </section>
+
+      <!-- Quick Tools -->
+      <section class="tools">
+        <h2><i class="fas fa-tools"></i> Quick Tools</h2>
+        <div class="tool-grid">
+          <div class="tool-card"><i class="fas fa-calculator"></i><p>Profit Calculator</p></div>
+          <div class="tool-card"><i class="fas fa-brain"></i><p>Idea Generator</p></div>
+          <div class="tool-card"><i class="fas fa-calendar-check"></i><p>Planner</p></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Scripts -->
+  <script src="dashboard.js"></script>
+  <script>
+    const toggleBtn = document.getElementById('toggleMenuBtn');
+    const sidebar = document.getElementById('sidebar');
+    toggleBtn.addEventListener('click', () => sidebar.classList.toggle('open'));
+
+    // Simulated GPT Advice API
+    document.getElementById('getAdviceBtn').addEventListener('click', () => {
+      const adviceBox = document.getElementById('aiAdviceResponse');
+      const adviceText = document.getElementById('adviceText');
+      adviceBox.style.display = 'block';
+      adviceText.textContent = 'Thinking...';
+
+      // Simulate delay as if calling GPT API
+      setTimeout(() => {
+        adviceText.textContent = "Focus on high-demand services like AI automation, web development, or affiliate monetization for quick growth.";
+      }, 1500);
+    });
+  </script>
+</body>
+</html>

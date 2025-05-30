@@ -3,54 +3,66 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Tutorials - OrionStarz</title>
+  <title>Tutorials - Smart Hustle Hub</title>
   <link rel="stylesheet" href="dashboard.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
-<body>
+<body class="dark-mode">
   <div class="dashboard">
-    <aside class="sidebar">
-      <h2>OrionStarz</h2>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="logo">Smart Hustle Hub</div>
       <nav>
-        <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
-        <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
-        <a href="services.html"><i class="fas fa-briefcase"></i> My Services</a>
-        <a href="messages.html"><i class="fas fa-envelope"></i> Messages</a>
-        <a href="tools.html"><i class="fas fa-tools"></i> Tools</a>
-        <a href="ebooks.html"><i class="fas fa-book"></i> Ebooks</a>
-        <a href="tutorials.html" class="active"><i class="fas fa-chalkboard-teacher"></i> Tutorials</a>
-        <a href="offers.html"><i class="fas fa-gift"></i> Offers</a>
-        <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
-        <a href="#" id="logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        <ul>
+          <li><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+          <li><a href="profile.html"><i class="fas fa-user"></i> Profile</a></li>
+          <li><a href="MyServices.html"><i class="fas fa-briefcase"></i> My Services</a></li>
+          <li><a href="messages.html"><i class="fas fa-envelope"></i> Messages</a></li>
+          <li><a href="tools.html"><i class="fas fa-toolbox"></i> Tools</a></li>
+          <li><a href="ebooks.html"><i class="fas fa-book"></i> Ebooks</a></li>
+          <li><a href="tutorials.html" class="active"><i class="fas fa-video"></i> Tutorials</a></li>
+          <li><a href="offers.html"><i class="fas fa-tags"></i> Offers</a></li>
+          <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+          <li><a href="logout.html" style="color: #ff4d4d;"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
       </nav>
     </aside>
 
-    <main class="main">
-      <header class="dashboard-header">
-        <h1>Video & PDF Tutorials</h1>
-        <p id="time"></p>
+    <!-- Main Content -->
+    <main class="main-content">
+      <header>
+        <div class="user-info">
+          <span>Tutorials</span>
+          <img src="https://i.pravatar.cc/100" alt="User Profile" />
+          <button id="toggleModeBtn" title="Toggle Light/Dark Mode"><i class="fas fa-adjust"></i></button>
+          <button id="toggleMenuBtn" title="Toggle Menu"><i class="fas fa-bars"></i></button>
+        </div>
       </header>
 
-      <section class="tutorials-section">
-        <div class="tutorial-card">
-          <h3>HTML & CSS Basics</h3>
-          <p>Beginner-friendly tutorial to build your first website.</p>
-          <button onclick="watchVideo('https://www.youtube.com/watch?v=UB1O30fR-EE')">Watch</button>
-          <button onclick="downloadPDF('html-css.pdf')">Download PDF</button>
-        </div>
+      <!-- Filters -->
+      <div class="tutorial-filter">
+        <label for="tutorialFilter">Filter by topic:</label>
+        <select id="tutorialFilter">
+          <option value="all">All</option>
+          <option value="ai">AI</option>
+          <option value="freelancing">Freelancing</option>
+          <option value="affiliate">Affiliate Marketing</option>
+          <option value="tools">Tools</option>
+          <option value="apps">App Usage</option>
+        </select>
+      </div>
 
-        <div class="tutorial-card">
-          <h3>Marketing with AI Tools</h3>
-          <p>Use tools like ChatGPT and Canva to grow online brands.</p>
-          <button onclick="watchVideo('https://www.youtube.com/watch?v=ZXZ8NYz9kEE')">Watch</button>
-          <button onclick="downloadPDF('ai-marketing.pdf')">Download PDF</button>
-        </div>
-
-        <!-- More tutorial cards -->
-      </section>
+      <!-- Tutorial Videos Section -->
+      <div id="tutorialsContainer" class="tutorials-grid"></div>
     </main>
   </div>
 
   <script src="tutorials.js"></script>
+  <script>
+    document.getElementById('toggleMenuBtn').addEventListener('click', () => {
+      document.getElementById('sidebar').classList.toggle('open');
+    });
+  </script>
 </body>
 </html>

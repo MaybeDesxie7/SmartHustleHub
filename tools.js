@@ -1,21 +1,58 @@
-// Show current date
-document.getElementById("time").textContent = new Date().toDateString();
+document.addEventListener('DOMContentLoaded', () => {
+  const toolFilter = document.getElementById('toolFilter');
+  const toolsContainer = document.getElementById('toolsContainer');
 
-// Password Generator Logic
-function generatePassword(length = 12) {
-  const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+";
-  let password = "";
-  for (let i = 0; i < length; i++) {
-    const randIndex = Math.floor(Math.random() * charset.length);
-    password += charset[randIndex];
+  const tools = [
+    {
+      name: "Canva",
+      description: "Design stunning graphics for social media, ads, and more.",
+      category: "design",
+      link: "https://affiliate-link.com/canva"
+    },
+    {
+      name: "Grammarly",
+      description: "Improve your writing and grammar in real time.",
+      category: "productivity",
+      link: "https://affiliate-link.com/grammarly"
+    },
+    {
+      name: "Jasper AI",
+      description: "AI copywriting assistant to boost your marketing content.",
+      category: "ai",
+      link: "https://affiliate-link.com/jasper"
+    },
+    {
+      name: "ConvertKit",
+      description: "Email marketing made simple for creators and entrepreneurs.",
+      category: "marketing",
+      link: "https://affiliate-link.com/convertkit"
+    },
+    {
+      name: "ClickFunnels",
+      description: "Create sales funnels and landing pages with ease.",
+      category: "marketing",
+      link: "https://affiliate-link.com/clickfunnels"
+    }
+  ];
+
+  function renderTools(filter) {
+    toolsContainer.innerHTML = '';
+    const filteredTools = filter === 'all' ? tools : tools.filter(tool => tool.category === filter);
+    filteredTools.forEach(tool => {
+      const card = document.createElement('div');
+      card.className = 'tool-card';
+      card.innerHTML = `
+        <h3>${tool.name}</h3>
+        <p>${tool.description}</p>
+        <a href="${tool.link}" target="_blank" class="visit-btn">Visit Tool</a>
+      `;
+      toolsContainer.appendChild(card);
+    });
   }
-  document.getElementById("passwordOutput").value = password;
-}
 
-// Color Picker Logic
-const colorPicker = document.getElementById("colorPicker");
-const colorCode = document.getElementById("colorCode");
+  toolFilter.addEventListener('change', (e) => {
+    renderTools(e.target.value);
+  });
 
-colorPicker.addEventListener("input", () => {
-  colorCode.value = colorPicker.value.toUpperCase();
+  renderTools('all');
 });

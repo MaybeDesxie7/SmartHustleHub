@@ -3,93 +3,131 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Messages - OrionStarz</title>
+  <title>Messages - Smart Hustle Hub</title>
   <link rel="stylesheet" href="dashboard.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
-<body>
+<body class="dark-mode">
   <div class="dashboard">
-    <aside class="sidebar">
-      <h2>OrionStarz</h2>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="logo">Smart Hustle Hub</div>
       <nav>
-       <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
-        <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
-        <a href="services.html"><i class="fas fa-briefcase"></i> My Services</a>
-        <a href="messages.html" class="active"><i class="fas fa-envelope"></i> Messages</a>
-        <a href="tools.html"><i class="fas fa-tools"></i> Tools</a>
-        <a href="ebooks.html"><i class="fas fa-book"></i> Ebooks</a>
-        <a href="tutorials.html"><i class="fas fa-chalkboard-teacher"></i> Tutorials</a>
-        <a href="offers.html"><i class="fas fa-gift"></i> Offers</a>
-        <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
-        <a href="#" id="logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        <ul>
+          <li><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+          <li><a href="profile.html"><i class="fas fa-user"></i> Profile</a></li>
+          <li><a href="MyServices.html"><i class="fas fa-briefcase"></i> My Services</a></li>
+          <li><a href="messages.html" class="active"><i class="fas fa-envelope"></i> Messages</a></li>
+          <li><a href="tools.html"><i class="fas fa-toolbox"></i> Tools</a></li>
+          <li><a href="ebooks.html"><i class="fas fa-book"></i> Ebooks</a></li>
+          <li><a href="tutorials.html"><i class="fas fa-video"></i> Tutorials</a></li>
+          <li><a href="offers.html"><i class="fas fa-tags"></i> Offers</a></li>
+          <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+          <li><a href="logout.html" style="color: #ff4d4d;"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
       </nav>
     </aside>
 
-    <main class="main">
-      <header class="dashboard-header">
-        <h1>Client Messages & Group Chat</h1>
-        <p id="time"></p>
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Header -->
+      <header>
+        <div class="user-info">
+          <span>Messages</span>
+          <img src="https://i.pravatar.cc/100" alt="User Profile" />
+          <button id="toggleModeBtn" title="Toggle Light/Dark Mode">
+            <i class="fas fa-adjust"></i>
+          </button>
+          <button id="toggleMenuBtn" title="Toggle Menu">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
       </header>
 
-      <div class="tabs">
-        <button class="tab-button active" data-tab="inbox">Inbox</button>
-        <button class="tab-button" data-tab="groupchat">Group Chat</button>
-      </div>
-
-      <!-- Inbox Tab -->
-      <section class="tab-content active" id="inbox">
-        <ul class="message-list" id="messageList"></ul>
-      </section>
-
-      <!-- Group Chat Tab -->
-      <section class="tab-content" id="groupchat">
-        <div class="chat-room" data-room="affiliators">
-          <h3>Affiliators</h3>
-          <div class="chat-box">
-            <div class="chat-message">John: Let's boost this week's campaign.</div>
-          </div>
-          <input type="text" placeholder="Type a message..." />
-          <button class="send-button">Send</button>
+      <!-- Chat Section -->
+      <section class="chat-section">
+        <div class="chat-tabs">
+          <button class="tab active" data-chat="group">Group Chat</button>
+          <button class="tab" data-chat="support">Support Chat</button>
+          <button class="tab" data-chat="private">Private Messages</button>
         </div>
 
-        <div class="chat-room" data-room="content-creators">
-          <h3>Content Creators</h3>
-          <div class="chat-box">
-            <div class="chat-message">Jane: Uploaded a new tutorial today!</div>
+        <!-- Group Chat Rooms -->
+        <div class="chat-box active" id="groupChatBox">
+          <select id="groupRoomSelect">
+            <option value="creators">Content Creators</option>
+            <option value="developers">Developers</option>
+            <option value="marketers">Marketers</option>
+          </select>
+          <div class="chat-messages" id="groupMessages"></div>
+          <div class="chat-input">
+            <input type="text" id="groupMessageInput" placeholder="Type your message..." />
+            <button id="sendGroupBtn"><i class="fas fa-paper-plane"></i></button>
           </div>
-          <input type="text" placeholder="Type a message..." />
-          <button class="send-button">Send</button>
         </div>
 
-        <div class="chat-room" data-room="web-developers">
-          <h3>Web Developers</h3>
-          <div class="chat-box">
-            <div class="chat-message">Dev: Working on the quote form update.</div>
+        <!-- Support Chat -->
+        <div class="chat-box" id="supportChatBox">
+          <div class="chat-messages" id="supportMessages">
+            <div class="message ai">Hi there! I'm your AI assistant. How can I help you today?</div>
           </div>
-          <input type="text" placeholder="Type a message..." />
-          <button class="send-button">Send</button>
+          <div class="chat-input">
+            <input type="text" id="supportMessageInput" placeholder="Ask something..." />
+            <button id="sendSupportBtn"><i class="fas fa-paper-plane"></i></button>
+          </div>
         </div>
 
-        <div class="chat-room" data-room="clients">
-          <h3>Clients</h3>
-          <div class="chat-box">
-            <div class="chat-message">Client A: Any update on my site?</div>
+        <!-- Private Chat -->
+        <div class="chat-box" id="privateChatBox">
+          <select id="userSelect">
+            <option value="user1">User1</option>
+            <option value="user2">User2</option>
+            <option value="user3">User3</option>
+          </select>
+          <div class="chat-messages" id="privateMessages"></div>
+          <div class="chat-input">
+            <input type="text" id="privateMessageInput" placeholder="Send a private message..." />
+            <button id="sendPrivateBtn"><i class="fas fa-paper-plane"></i></button>
           </div>
-          <input type="text" placeholder="Type a message..." />
-          <button class="send-button">Send</button>
         </div>
+        <!-- Room Tabs --
+<div class="room-tabs">
+  <button class="room-tab active">General</button>
+  <button class="room-tab">Developers</button>
+  <button class="room-tab">Support</button>
+</div>
 
-        <div class="chat-room" data-room="team-leads">
-          <h3>Team Leads</h3>
-          <div class="chat-box">
-            <div class="chat-message">Lead: Reminder—briefing starts at 10 AM.</div>
-          </div>
-          <input type="text" placeholder="Type a message..." />
-          <button class="send-button">Send</button>
-        </div>
+<!-- Private Inbox --
+<div class="inbox-container">
+  <div class="inbox-users">
+    <div class="inbox-user active">John Doe</div>
+    <div class="inbox-user">Alice</div>
+    <div class="inbox-user">Support</div>
+  </div>
+
+  <div class="inbox-chat">
+    <div class="chat-messages">
+      <!-- message.user / message.ai --
+    </div>
+    <div class="chat-input">
+      <input type="text" placeholder="Type a message...">
+      <button>Send</button>
+    </div>
+  </div>
+</div>-->
+
       </section>
     </main>
   </div>
 
   <script src="messages.js"></script>
+  <script>
+    const toggleBtn = document.getElementById('toggleMenuBtn');
+    const sidebar = document.getElementById('sidebar');
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+    });
+  </script>
 </body>
 </html>
