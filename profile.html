@@ -46,22 +46,26 @@
       </header>
 
       <!-- Profile Info Section -->
-      <section class="profile-section">
-        <h2><i class="fas fa-user-circle"></i> My Profile</h2>
-        <div class="profile-container">
-          <div class="profile-avatar">
-            <img src="https://i.pravatar.cc/150?img=3" alt="Profile Avatar" />
-            <input type="file" id="avatarUpload" />
-          </div>
-          <div class="profile-details">
-            <label>Name: <input type="text" value="Nyasha Desire Sadzamari" /></label>
-            <label>Email: <input type="email" value="nyashadesire07@gmail.com" /></label>
-            <label>Phone: <input type="tel" value="+263774571833" /></label>
-            <label>Address: <input type="text" value="5357 Cowdray Park, Bulawayo, Zimbabwe" /></label>
-            <button class="save-btn">Save Changes</button>
-          </div>
-        </div>
-      </section>
+     <section class="profile-section">
+  <h2><i class="fas fa-user-circle"></i> My Profile</h2>
+  <form id="profileForm" class="profile-container" enctype="multipart/form-data" method="POST">
+    
+    <div class="profile-avatar">
+      <img id="avatarPreview" src="https://i.pravatar.cc/150?img=3" alt="Profile Avatar" />
+      <input type="file" id="avatarUpload" name="avatar" />
+    </div>
+
+    <div class="profile-details">
+      <label>Name: <input type="text" id="nameInput" name="name" value="" /></label>
+      <label>Email: <input type="email" id="emailInput" name="email" value="" /></label>
+      <label>Phone: <input type="tel" id="phoneInput" name="phone" value="" /></label>
+      <label>Address: <input type="text" id="addressInput" name="address" value="" /></label>
+      <button type="submit" class="save-btn" id="saveProfileBtn">Save Changes</button>
+    </div>
+    
+  </form>
+</section>
+
 
       <!-- Activity Feed Section -->
       <section class="tools">
