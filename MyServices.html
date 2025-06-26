@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>My Services - Smart Hustle Hub</title>
-  <link rel="stylesheet" href="dashboard.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="dashboard.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body class="dark-mode">
   <div class="dashboard">
@@ -34,7 +34,7 @@
       <header>
         <div class="user-info">
           <span>Manage Your Services</span>
-           <img src="https://i.pravatar.cc/100" alt="User Profile" />
+          <img src="https://i.pravatar.cc/100" alt="User Profile" />
           <button id="toggleModeBtn" title="Toggle Light/Dark Mode">
             <i class="fas fa-adjust"></i>
           </button>
@@ -47,16 +47,16 @@
       <section class="services-section">
         <h2><i class="fas fa-briefcase"></i> Add a New Service</h2>
         <form id="serviceForm">
-          <label>Title: <input type="text" id="serviceTitle" required></label>
-          <label>Description: <textarea id="serviceDescription" required></textarea></label>
-          <label>Price: <input type="number" id="servicePrice" required></label>
-          <label>Category: <input type="text" id="serviceCategory" required></label>
+          <label>Title: <input type="text" id="serviceTitle" name="title" required></label>
+          <label>Description: <textarea id="serviceDescription" name="description" required></textarea></label>
+          <label>Price: <input type="number" id="servicePrice" name="price" required></label>
+          <label>Category: <input type="text" id="serviceCategory" name="category" required></label>
           <button type="submit" class="save-btn">Add Service</button>
         </form>
 
         <h2><i class="fas fa-list"></i> Your Services</h2>
         <ul id="servicesList" class="services-list">
-          <!-- Dynamic services will be injected here -->
+          <!-- Services will be dynamically inserted here -->
         </ul>
       </section>
     </main>
@@ -64,12 +64,11 @@
 
   <script src="MyServices.js"></script>
   <script>
-  const toggleBtn = document.getElementById('toggleMenuBtn');
-  const sidebar = document.getElementById('sidebar');
-
-  toggleBtn.addEventListener('click', () => {
-    sidebar.classList.toggle('open');
-  });
-</script>
+    const toggleBtn = document.getElementById('toggleMenuBtn');
+    const sidebar = document.getElementById('sidebar');
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+    });
+  </script>
 </body>
 </html>
